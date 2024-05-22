@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+/*
 output "trigger_sa" {
   value       = module.trigger_service_account[*].email
   description = "List of Cloud Build Trigger Service Account"
@@ -23,7 +24,7 @@ output "execution_sa" {
   value       = [for sa in local.target_sa : module.execution_service_accounts["${sa.project}=>${sa.exe_sa}"].email]
   description = "List of Deploy target Execution Service Account"
 }
-
+*/
 
 output "delivery_pipeline_and_target" {
   value       = { "google_clouddeploy_delivery_pipeline.delivery_pipeline.id" = flatten([for target in local.stage_targets : google_clouddeploy_target.target[target.target_name].id]) }

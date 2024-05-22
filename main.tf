@@ -71,7 +71,7 @@ locals {
 #create cloud deploy pipeline
 
 resource "google_clouddeploy_delivery_pipeline" "delivery_pipeline" {
-  depends_on = [module.trigger_service_account, module.execution_service_accounts]
+  //depends_on = [module.trigger_service_account, module.execution_service_accounts]
   location   = var.location
   name       = var.pipeline_name
   project    = var.project
@@ -97,7 +97,7 @@ resource "google_clouddeploy_delivery_pipeline" "delivery_pipeline" {
 #create cloud deploy targets
 
 resource "google_clouddeploy_target" "target" {
-  depends_on = [module.trigger_service_account, module.execution_service_accounts]
+  //depends_on = [module.trigger_service_account, module.execution_service_accounts]
   for_each   = { for target in local.stage_targets : target.target_name => target }
   location   = var.location
   name       = each.value.target_name
